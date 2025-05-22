@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block titulo %}Lista de Libros{% endblock %}
+
+{% block contenido %}
+<div class="card mb-4 shadow-sm">
+  <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+    <a href="{% url 'create' %}" class="btn btn-success">
+      <i class="bi bi-plus-lg"></i> Agregar Nuevo Libro
+    </a>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title mb-3">Catálogo de Libros</h5>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle display responsive nowrap" style="width:100%">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Título</th>
+            <th>Imagen</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for libro in libros %}
+          <tr>
+            <th scope="row">{{ libro.id }}</th>
+            <td>{{ libro.titulo }}</td>
+            <td>
+              {% if libro.imagen %}
+              <img src="{{ libro.imagen.url }}" alt="Portada de {{ libro.titulo }}" class="img-thumbnail" style="width: 80px; height: 80px;" />
+              {% else %}
+              <span class="text-muted">Sin imagen</span>
+              {% endif %}
+            </td>
+            <td >{{ libro.descripcion }}</td>
+            <td>
+              <a href="{% url 'edit' libro.id %}" class="btn btn-sm btn-outline-secondary me-1">
+                <i class="bi bi-pencil-fill"></i> Editar
+              </a>
+              <a href="{% url 'delete' libro.id %}" class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-trash-fill"></i> Borrar
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $(document).ready(function () {
+    $('.table').DataTable({
+      responsive: true,
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+      }
+    });
+  });
+</script>
+{% endblock %}

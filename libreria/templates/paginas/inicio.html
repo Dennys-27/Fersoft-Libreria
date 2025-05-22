@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block titulo %} Inicio {% endblock %}
+{% block contenido %}
+<div class="row align-items-md-stretch">
+  <div class="col-md-6">
+    <div class="h-100 p-5 text-white bg-primary border rounded-3">
+      <h2>¡Bienvenido a nuestra Biblioteca!</h2>
+      <p>
+        Explora un mundo de historias y conocimientos. Aquí encontrarás 
+        títulos de todo tipo: novelas, ensayos, ciencia, historia y más. 
+        Disfruta de nuestra colección y descubre tu próxima lectura.
+      </p>
+      <button class="btn btn-outline-light" type="button">
+        Explorar catálogo
+      </button>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="h-100 p-5 bg-light border rounded-3">
+      <h2>¿Qué puedes hacer?</h2>
+      <p>
+        1. Navega por categorías y géneros.<br>
+        2. Busca por autor, título o palabra clave.<br>
+        3. Guarda tus libros favoritos.<br>
+        4. Consulta reseñas y valoraciones de otros lectores.
+      </p>
+      <button class="btn btn-primary" type="button">
+        Ver más detalles
+      </button>
+    </div>
+  </div>
+</div>
+
+
+ {% endblock %}
